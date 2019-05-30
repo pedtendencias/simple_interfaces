@@ -28,12 +28,33 @@ public class ImprovedFileChooser extends JPanel
 	
 	public ImprovedFileChooser()
 	{
-		standard_frame();
+		standard_panel();
 		adds_textfield();
 		adds_activate_chooser_button();
 		adds_file_chooser_and_frame();
 	}
+	
+	@Override
+	public void setBounds(int x, int y, int width, int height)
+	{
+		if(target_field != null) target_field.setBounds((int)target_field.getBounds().getX(), 
+							   							(int)target_field.getBounds().getY(), 
+							   							(int)(target_field.getBounds().getWidth() / (getBounds().getWidth() * 1.0 / width)), 
+							   							(int)target_field.getBounds().getHeight());
+		
+		super.setBounds(x, y, width, height);
+	}
 
+	public void setMultiSelectionEnabled(boolean option)
+	{
+		file_chooser.setMultiSelectionEnabled(option);
+	}
+	
+	public boolean isMultiSelectionEnabled()
+	{
+		return file_chooser.isMultiSelectionEnabled();
+	}
+	
 	private void adds_file_chooser_and_frame()
 	{
 		file_chooser_frame = new JFrame();
@@ -96,10 +117,10 @@ public class ImprovedFileChooser extends JPanel
 		add(target_field);
 	}
 
-	private void standard_frame()
+	private void standard_panel()
 	{
 		setBounds(100, 100, 300, 200);
-		setBackground(Color.GRAY);
+		setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
 		setLayout(null);
 	}
 }
