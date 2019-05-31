@@ -34,6 +34,11 @@ public class ImprovedFileChooser extends JPanel
 		adds_file_chooser_and_frame();
 	}
 	
+	public List<File> getFiles()
+	{
+		return files; 
+	}
+	
 	@Override
 	public void setBounds(int x, int y, int width, int height)
 	{
